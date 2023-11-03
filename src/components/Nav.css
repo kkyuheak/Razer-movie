@@ -1,0 +1,56 @@
+header {
+  /* background-color: pink; */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+  max-width: 1400px;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu-icon img {
+  width: 30px;
+  height: 30px;
+}
+
+.logo-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: rgb(19, 204, 6);
+  cursor: pointer;
+}
+
+.nav-right button {
+  font-size: 12px;
+  width: 70px;
+  height: 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-btn {
+  background-color: transparent;
+  margin-right: 5px;
+}
+
+.login-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.signIn-btn {
+  background-color: rgb(19, 204, 6);
+}
+
+.signIn-btn:hover {
+  background-color: rgba(19, 204, 6, 0.8);
+}
