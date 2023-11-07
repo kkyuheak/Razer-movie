@@ -1,0 +1,24 @@
+footer {
+  background-color: grey;
+  height: 130px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.footer-box {
+  width: 250px;
+  margin: auto;
+}
+
+.footer-box > a {
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+.footer-box > a:hover {
+  text-decoration: underline;
+}

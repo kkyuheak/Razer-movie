@@ -62,7 +62,7 @@ const MainPage = () => {
             console.log(response.data.results);
             setVideoKey(response.data.results[0].key);
           } else {
-            console.log("set");
+            console.log("no-key");
           }
         } catch (error) {
           console.error(error);
