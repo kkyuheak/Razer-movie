@@ -35,7 +35,11 @@ const Banner = ({ movie }) => {
 
   return (
     <div>
-      <MovieWrapper>
+      <MovieWrapper
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
         {movieList.map((movie) => {
           return (
             <li key={movie.id}>
@@ -51,7 +55,12 @@ const Banner = ({ movie }) => {
           );
         })}
       </MovieWrapper>
-      {modalOpen ? <Moviemodal selectedMovieId={bannerMovie.id} /> : null}
+      {modalOpen ? (
+        <Moviemodal
+          selectedMovieId={bannerMovie.id}
+          setModalOpen={setModalOpen}
+        />
+      ) : null}
     </div>
   );
 };
@@ -70,6 +79,9 @@ const MovieWrapper = styled.ul`
     display: block;
     border-radius: 3px;
     cursor: pointer;
+  }
+  img:hover {
+    transform: scale(1.1);
   }
 `;
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { instance } from "../../api";
 import "./Moviemodal.css";
 
-const Moviemodal = ({ selectedMovieId }) => {
+const Moviemodal = ({ selectedMovieId, setModalOpen }) => {
   const [detailMovie, setDetailMovie] = useState({});
 
   console.log(selectedMovieId);
@@ -17,18 +17,39 @@ const Moviemodal = ({ selectedMovieId }) => {
     console.log(response);
   };
 
+  window.addEventListener("click", () => {
+    setModalOpen(false);
+  });
+
   return (
-    <div className="movie-modal">
-      <div className="modal-img">
-        <img
-          src={`https://image.tmdb.org/t/p/original/${detailMovie.backdrop_path}`}
-          alt={detailMovie.backdrop_path}
-        />
-      </div>
-      <div className="modal-detail">
-        <p className="detail-title">{detailMovie.title}</p>
-        <p className="detail-overview">{detailMovie.overview}</p>
-        <p>개봉일 : {detailMovie.release_date}</p>
+    <div className="modal">
+      <div className="movie-modal">
+        <div
+          className="modal-wrapper"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <div className="modal-img">
+            <img
+              src={`https://image.tmdb.org/t/p/original/${detailMovie.backdrop_path}`}
+              alt={detailMovie.backdrop_path}
+            />
+          </div>
+          <div className="modal-detail">
+            <p className="detail-title">{detailMovie.title}</p>
+            <p className="detail-overview">{detailMovie.overview}</p>
+            <p>개봉일 : {detailMovie.release_date}</p>
+          </div>
+          <div
+            className="modal-close"
+            onClick={() => {
+              setModalOpen(false);
+            }}
+          >
+            <img src="images/close.png" alt="close-icon" />
+          </div>
+        </div>
       </div>
     </div>
   );
