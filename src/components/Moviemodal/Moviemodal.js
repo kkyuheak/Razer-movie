@@ -24,32 +24,34 @@ const Moviemodal = ({ selectedMovieId, setModalOpen }) => {
   return (
     <div className="modal">
       <div className="movie-modal">
-        <div
-          className="modal-wrapper"
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          <div className="modal-img">
-            <img
-              src={`https://image.tmdb.org/t/p/original/${detailMovie.backdrop_path}`}
-              alt={detailMovie.backdrop_path}
-            />
-          </div>
-          <div className="modal-detail">
-            <p className="detail-title">{detailMovie.title}</p>
-            <p className="detail-overview">{detailMovie.overview}</p>
-            <p>개봉일 : {detailMovie.release_date}</p>
-          </div>
+        {detailMovie.backdrop_path ? (
           <div
-            className="modal-close"
-            onClick={() => {
-              setModalOpen(false);
+            className="modal-wrapper"
+            onClick={(e) => {
+              e.stopPropagation();
             }}
           >
-            <img src="images/close.png" alt="close-icon" />
+            <div className="modal-img">
+              <img
+                src={`https://image.tmdb.org/t/p/original/${detailMovie.backdrop_path}`}
+                alt={detailMovie.backdrop_path}
+              />
+            </div>
+            <div className="modal-detail">
+              <p className="detail-title">{detailMovie.title}</p>
+              <p className="detail-overview">{detailMovie.overview}</p>
+              <p>개봉일 : {detailMovie.release_date}</p>
+            </div>
+            <div
+              className="modal-close"
+              onClick={() => {
+                setModalOpen(false);
+              }}
+            >
+              <img src="images/close.png" alt="close-icon" />
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     </div>
   );

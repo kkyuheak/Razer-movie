@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Nav.css";
+import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -9,6 +10,8 @@ const Nav = () => {
     console.log(open);
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       <header>
@@ -17,12 +20,24 @@ const Nav = () => {
             <div className="menu-icon" onClick={handleClick}>
               <img src="images/menu.png" alt="menu-icon" />
             </div>
-            <div className="logo-title">
+            <div
+              className="logo-title"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
               <p>R A Z E R</p>
             </div>
           </div>
           <div className="nav-right">
-            <button className="login-btn">로그인</button>
+            <button
+              className="login-btn"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              로그인
+            </button>
             <button className="signIn-btn">회원가입</button>
           </div>
         </div>
@@ -31,8 +46,20 @@ const Nav = () => {
             <img src="images/close.png" alt="close-icon" />
           </div>
 
-          <p>홈</p>
-          <p>TV프로그램</p>
+          <p
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            홈
+          </p>
+          <p
+            onClick={() => {
+              navigate("/tvprogram");
+            }}
+          >
+            TV프로그램
+          </p>
         </div>
       </header>
     </>

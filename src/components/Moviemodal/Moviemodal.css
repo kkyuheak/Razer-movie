@@ -16,7 +16,7 @@
 }
 
 .modal-wrapper {
-  width: 610px;
+  width: 550px;
   /* height: 500px; */
   /* border: 1px solid rgba(0, 0, 0, 0.3); */
   border-radius: 20px;
@@ -30,7 +30,7 @@
 }
 
 .modal-img > img {
-  width: 610px;
+  width: 550px;
   height: 300px;
   display: block;
   border-top-right-radius: 20px;

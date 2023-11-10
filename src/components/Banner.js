@@ -81,7 +81,14 @@ const MovieWrapper = styled.ul`
     cursor: pointer;
   }
   img:hover {
-    transform: scale(1.1);
+    border: 2px solid rgb(89, 174, 166);
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 130px;
+      height: 180px;
+    }
   }
 `;
 
