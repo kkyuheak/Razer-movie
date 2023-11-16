@@ -1,0 +1,43 @@
+h1 {
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.main-img {
+  width: 1000px;
+  height: 400px;
+  display: block;
+  border-radius: 10px;
+}
+.tv-name {
+  width: 800px;
+  font-size: 60px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  position: absolute;
+  bottom: 30px;
+  left: 160px;
+}
+@media screen and (max-width: 1100px) {
+  .main-img {
+    width: 800px;
+    height: 350px;
+    margin: 0 auto;
+  }
+
+  .tv-name {
+    width: 600px;
+    position: absolute;
+    bottom: 50px;
+    left: 120px;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: rgb(19, 204, 6) !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: rgb(19, 204, 6) !important;
+}
