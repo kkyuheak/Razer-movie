@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import Footer from "./components/TheFooter";
 import MainPage from "./pages/MainPage";
 import TvPage from "./pages/TvPage";
+import TvDetailPage from "./pages/TvDetailPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/tvprogram" element={<TvPage />} />
+        <Route path="/tvprogram/:tvid" element={<TvDetailPage />} />
       </Routes>
       <Footer />
     </div>

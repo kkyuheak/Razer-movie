@@ -94,14 +94,6 @@ header {
   padding: 3px 5px;
 }
 
-/* .side-menu > p::after {
-  content: "";
-  position: absolute;
-  width: 90px;
-  height: 1px;
-  background-color: black;
-} */
-
 .close-icon {
   background-color: rgba(255, 255, 255, 0.3);
   border: 1px solid black;
@@ -121,4 +113,24 @@ header {
 .close-icon:hover {
   background-color: rgba(255, 255, 255, 0.8);
   transition: all 0.3s;
+}
+
+.nav-black {
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: calc(100% - 225px);
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: all 0.3s;
+  transform: translate(-225px, 0);
+}
+
+.black-show {
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.3s;
+  transform: translate(0px, 0px);
 }

@@ -18,7 +18,7 @@ const Nav = () => {
         <div className="nav">
           <div className="nav-left">
             <div className="menu-icon" onClick={handleClick}>
-              <img src="images/menu.png" alt="menu-icon" />
+              <img src="../images/menu.png" alt="menu-icon" />
             </div>
             <div
               className="logo-title"
@@ -43,12 +43,13 @@ const Nav = () => {
         </div>
         <div className={open ? "side-menu show" : "side-menu"}>
           <div className="close-icon" onClick={handleClick}>
-            <img src="images/close.png" alt="close-icon" />
+            <img src="../images/close.png" alt="close-icon" />
           </div>
 
           <p
             onClick={() => {
               navigate("/");
+              setOpen(!open);
             }}
           >
             홈
@@ -56,11 +57,18 @@ const Nav = () => {
           <p
             onClick={() => {
               navigate("/tvprogram");
+              setOpen(!open);
             }}
           >
             TV프로그램
           </p>
         </div>
+        <div
+          className={open ? "nav-black black-show" : "nav-black"}
+          onClick={() => {
+            setOpen(!open);
+          }}
+        ></div>
       </header>
     </>
   );

@@ -7,10 +7,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./TvPage.css";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const TvPage = () => {
   const [tvList, setTvList] = useState([]);
   const [topRatedTvList, setTopRatedTvList] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getTvList();
@@ -30,7 +33,7 @@ const TvPage = () => {
 
   return (
     <Container>
-      <h1>TV 프로그램</h1>
+      <h1 className="tv-title">TV 프로그램</h1>
 
       <Swiper
         loop={true}
@@ -49,6 +52,9 @@ const TvPage = () => {
                   src={`https://image.tmdb.org/t/p/original/${tv.backdrop_path}`}
                   alt={tv.name}
                   className="main-img"
+                  onClick={() => {
+                    navigate(`/tvprogram/${tv.id}`);
+                  }}
                 />
                 <p className="tv-name">{tv.name}</p>
               </Wrapper>
@@ -57,16 +63,19 @@ const TvPage = () => {
         })}
       </Swiper>
 
-      <h1>평점 높은 TV프로그램</h1>
+      <h1 className="tv-title">평점 높은 TV프로그램</h1>
 
       <div>
         <TvBanner>
           {topRatedTvList.map((tvList) => {
             return (
-              <li>
+              <li key={tvList.id}>
                 <TopTvImg
                   src={`https://image.tmdb.org/t/p/original${tvList.poster_path}`}
                   alt={tvList.name}
+                  onClick={() => {
+                    navigate(`/tvprogram/${tvList.id}`);
+                  }}
                 />
               </li>
             );
@@ -89,6 +98,7 @@ const Wrapper = styled.div`
   height: 400px;
   margin: 0 auto;
   position: reletive;
+  cursor: pointer;
 `;
 
 const TvBanner = styled.ul`
@@ -103,4 +113,8 @@ const TopTvImg = styled.img`
   height: 225px;
   display: block;
   cursor: pointer;
+
+  &:hover {
+    border: 2px solid rgb(19, 204, 6);
+  }
 `;
