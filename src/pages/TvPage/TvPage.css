@@ -41,3 +41,9 @@
 .swiper-button-next {
   color: rgb(19, 204, 6) !important;
 }
+
+.tv-list-title {
+  font-size: 13px;
+  padding: 10px;
+  height: 44px;
+}
