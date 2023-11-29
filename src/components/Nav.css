@@ -4,7 +4,8 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  background-color: rgba(233, 233, 233, 0.9);
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.7);
   z-index: 10;
 }
 
@@ -16,7 +17,7 @@ header {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1200px) {
   .nav {
     padding: 0 5px;
   }
@@ -139,4 +140,42 @@ header {
   opacity: 1;
   transition: all 0.3s;
   transform: translate(0px, 0px);
+}
+
+.user-menu {
+  position: relative;
+}
+
+.user-name {
+  cursor: default;
+}
+
+.user-submenu {
+  visibility: hidden;
+  opacity: 0;
+  background-color: #fff;
+  position: absolute;
+  right: 0;
+  width: 90px;
+  height: 110px;
+  border: 1px solid black;
+  transition: all 0.2s;
+}
+
+.logout-btn {
+  width: 60px;
+  height: 25px;
+  text-align: center;
+  margin: 5px auto;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.logout-btn:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.open {
+  visibility: visible;
+  opacity: 1;
 }

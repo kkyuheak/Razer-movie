@@ -8,7 +8,6 @@ import "swiper/css/pagination";
 import "./TvPage.css";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const TvPage = () => {
   const [tvList, setTvList] = useState([]);
@@ -117,7 +116,7 @@ const Wrapper = styled.div`
   width: 1000px;
   height: 400px;
   margin: 0 auto;
-  position: reletive;
+  position: relative;
   cursor: pointer;
 `;
 

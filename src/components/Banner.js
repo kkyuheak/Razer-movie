@@ -8,9 +8,23 @@ const Banner = ({ movie }) => {
   const [movieList, setMovieList] = useState([]);
   const [bannerMovie, setBannerMovie] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
+  const [slidePosition, setSlidePosition] = useState(0);
+  const [btnShow, setBtnShow] = useState(false);
+  const [rightBtnShow, setRightBtnShow] = useState(false);
 
   useEffect(() => {
     findMovieList();
+  }, []);
+
+  useEffect(() => {
+    handleBtnShow();
+  }, [slidePosition]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setRightBtnShow(true);
+    }, 2500);
+    return () => clearTimeout(timer);
   }, []);
 
   const findMovieList = async () => {
@@ -24,17 +38,35 @@ const Banner = ({ movie }) => {
     console.log(bannerMovie);
   };
 
-  // const movieVideo = async () => {
-  //   const res = await instance.get("movie/507089/videos");
-  //   console.log(res);
-  // };
+  const handlePrevClick = () => {
+    setSlidePosition((prevPosition) => prevPosition - 1);
+  };
 
-  // movieVideo();
+  const handleNextClick = () => {
+    setSlidePosition((prevPosition) => {
+      if (prevPosition === 5) {
+        return 0;
+      }
+      return prevPosition + 1;
+    });
+  };
 
-  // console.log(movieList);
+  const handleBtnShow = () => {
+    if (slidePosition === 0) {
+      setBtnShow(false);
+    } else {
+      setBtnShow(true);
+    }
+  };
 
   return (
-    <div>
+    <Container>
+      <div
+        className={btnShow ? "prev-btn show-btn" : "prev-btn"}
+        onClick={handlePrevClick}
+      >
+        <p>{"<"}</p>
+      </div>
       <MovieWrapper
         onClick={(e) => {
           e.stopPropagation();
@@ -42,7 +74,7 @@ const Banner = ({ movie }) => {
       >
         {movieList.map((movie) => {
           return (
-            <li key={movie.id}>
+            <MovieListItem key={movie.id} slideposition={slidePosition}>
               <img
                 src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                 alt={movie.title}
@@ -51,31 +83,48 @@ const Banner = ({ movie }) => {
                   e.preventDefault();
                 }}
               />
-            </li>
+            </MovieListItem>
           );
         })}
       </MovieWrapper>
+      <div
+        className={rightBtnShow ? "next-btn show-btn" : "next-btn"}
+        onClick={handleNextClick}
+      >
+        <p>{">"}</p>
+      </div>
+
       {modalOpen ? (
         <Moviemodal
           selectedMovieId={bannerMovie.id}
           setModalOpen={setModalOpen}
         />
       ) : null}
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const MovieWrapper = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   gap: 15px;
   list-style: none;
-  overflow-y: hidden;
-  margin-bottom: 50px;
+  overflow: hidden;
+  position: relative;
+`;
+
+const MovieListItem = styled.li`
+  transform: translateX(${(props) => props.slideposition * -430}px);
+  transition: all 0.4s;
 
   img {
-    width: 155px;
-    height: 220px;
+    width: 150px;
+    height: 210px;
     display: block;
     border-radius: 3px;
     cursor: pointer;
@@ -84,7 +133,14 @@ const MovieWrapper = styled.ul`
     border: 2px solid rgb(89, 174, 166);
   }
 
-  @media (max-width: 768px) {
+  @media screen and (max-width: 1400px) {
+    img {
+      width: 140px;
+      height: 200px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
     img {
       width: 130px;
       height: 180px;

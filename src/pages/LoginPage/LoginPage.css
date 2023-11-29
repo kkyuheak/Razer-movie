@@ -1,0 +1,42 @@
+.login-container {
+  display: flex;
+  height: calc(100vh - 35px);
+}
+
+.login-submit-btn {
+  display: block;
+  border-radius: 20px;
+  width: 210px;
+  height: 35px;
+  margin: 10px auto;
+  background-color: rgb(19, 204, 6);
+  border: none;
+  cursor: pointer;
+}
+
+.login-submit-btn:hover {
+  background-color: rgba(19, 204, 6, 0.8);
+}
+
+.login-google-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: none;
+  width: 210px;
+  height: 35px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.login-google-btn > img {
+  width: 20px;
+  height: 20px;
+}
+
+.login-google-btn > p {
+  font-size: 12px;
+}

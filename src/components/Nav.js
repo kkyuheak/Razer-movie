@@ -1,16 +1,32 @@
 import React, { useState } from "react";
 import "./Nav.css";
 import { useNavigate } from "react-router-dom";
+import { getAuth, signOut } from "firebase/auth";
 
 const Nav = () => {
   const [open, setOpen] = useState(false);
+  const [over, setOver] = useState(false);
+  const navigate = useNavigate();
+  const auth = getAuth();
+
+  const getUserInfo = JSON.parse(localStorage.getItem("userInfo"));
+  console.log(getUserInfo);
 
   const handleClick = () => {
     setOpen(!open);
     console.log(open);
   };
 
-  const navigate = useNavigate();
+  const handleLogOut = () => {
+    signOut(auth)
+      .then(() => {
+        localStorage.removeItem("userInfo");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <>
@@ -29,17 +45,51 @@ const Nav = () => {
               <p>R A Z E R</p>
             </div>
           </div>
-          <div className="nav-right">
-            <button
-              className="login-btn"
-              onClick={() => {
-                navigate("/login");
-              }}
-            >
-              로그인
-            </button>
-            <button className="signIn-btn">회원가입</button>
-          </div>
+          {!getUserInfo ? (
+            <div className="nav-right">
+              <button
+                className="login-btn"
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                로그인
+              </button>
+              <button className="signIn-btn">회원가입</button>
+            </div>
+          ) : (
+            <div className="user-menu">
+              <p
+                className="user-name"
+                onMouseOver={() => {
+                  setOver(true);
+                }}
+                onMouseLeave={() => {
+                  setOver(false);
+                }}
+              >
+                {getUserInfo.displayName}
+              </p>
+              <div
+                className={over ? "user-submenu open" : "user-submenu"}
+                onMouseOver={() => {
+                  setOver(true);
+                }}
+                onMouseLeave={() => {
+                  setOver(false);
+                }}
+              >
+                <p
+                  className="logout-btn"
+                  onClick={() => {
+                    handleLogOut();
+                  }}
+                >
+                  로그아웃
+                </p>
+              </div>
+            </div>
+          )}
         </div>
         <div className={open ? "side-menu show" : "side-menu"}>
           <div className="close-icon" onClick={handleClick}>

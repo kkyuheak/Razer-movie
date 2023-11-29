@@ -1,0 +1,39 @@
+/* .movie-poster {
+  width: 155px;
+  height: 220px;
+  display: block;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.movie-poster:hover {
+  border: 2px solid rgb(89, 174, 166);
+} */
+.prev-btn,
+.next-btn {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.prev-btn > p,
+.next-btn > p {
+  width: 30px;
+  height: 30px;
+  font-size: 24px;
+  background-color: rgb(152, 152, 152);
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.prev-btn > p:hover,
+.next-btn > p:hover {
+  background-color: rgb(190, 190, 190);
+}
+
+.show-btn {
+  visibility: visible;
+  opacity: 1;
+}
